@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		</section>
-        
+
 		<header id="header" class="darkgrey_section">
 			<div class="container">
 				<div class="row">
@@ -50,7 +50,7 @@
 						</div>
 						<nav>
 							<ul id="mainmenu" class="menu sf-menu responsive-menu superfish">
-								<li class="active">
+								<li>
 									<a href="index.htm">Home</a>
 								</li>
 								<li class="dropdown">
@@ -79,7 +79,7 @@
 								<li>
 									<a href="promoties.html">Acties en Promoties</a>
 								</li>
-								<li>
+								<li class="active">
 									<a href="contact.html">Contact</a>
 								</li>
 							</ul>
@@ -88,18 +88,60 @@
 				</div>
 			</div>
 		</header>
-    
-		<section id="info" class="light_section">
+
+		<section id="middle" class="grey_section">
 			<div class="container">
+
 				<div class="row">
-					<div class="col-sm-12 text-center">
-						Evissimo werd in 2014 opgericht door Evy De Swert.<br />
-						Dit schoonheidssalon biedt u de rust die u nodig heeft na een drukke dag.<br />
-						Om een persoonlijke aanpak te kunnen garanderen wordt er enkel op afspraak gewerkt. 
+					<div class="block col-sm-6">
+						<h3>Contact Formulier</h2>
+						<form class="contact-form" method="post" action="/">
+							<p class="contact-form-name">
+								<label for="name">Naam <span class="required">*</span></label>
+								<input type="text" aria-required="true" size="30" value="" name="name" id="name" class="form-control" placeholder="Naam">
+							</p>
+							<p class="contact-form-email">
+								<label for="email">Email <span class="required">*</span></label>
+								<input type="email" aria-required="true" size="30" value="" name="email" id="email" class="form-control" placeholder="Email">
+							</p>
+							<p class="contact-form-phone">
+								<label for="phone">Telefoon / GSM <span class="required">*</span></label>
+								<input type="phone" aria-required="true" size="30" value="" name="phone" id="phone" class="form-control" placeholder="Telefoon / GSM">
+							</p>
+							<p class="contact-form-subject">
+								<label for="subject">Onderwerp <span class="required">*</span></label>
+								<input type="text" aria-required="true" size="30" value="" name="subject" id="subject" class="form-control" placeholder="Subject">
+							</p>
+							<p class="contact-form-message">
+								<label for="message">Uw vraag</label>
+								<textarea aria-required="true" rows="8" cols="45" name="question" id="question" class="form-control" placeholder="Geef hier uw vraag in"></textarea>
+							</p>
+							<p class="contact-form-submit vertical-margin-40">
+								<input type="submit" value="Verstuur" id="contact_form_submit" name="contact_submit" class="theme_btn">
+							</p>
+						</form>
+					</div>
+					<div class="block widget_text col-sm-6">
+						<h3>Contact gegevens</h3>
+						<p>
+							<i class="rt-icon-location highlight"></i> <strong>Adres:</strong> Schrieksesteenweg 9, 2580 Putte, België<br> 
+							<i class="rt-icon-phone highlight"></i> <strong>Telefoon: </strong>+32 471 72 39 47<br>
+							<i class="rt-icon-mail2 highlight"></i> <strong>Email: </strong><a href="mailto:evy@evissimo.be">evy@evissimo.be</a><br> 
+							<i class="rt-icon-world highlight"></i> <strong>Website: </strong><a href="http://www.evissimo.be">www.evisimo.be</a><br><br>
+							<strong>BTW BE 0544.413.092</strong><br><br>
+							<i class="rt-icon-time highlight"></i> <strong>Openingsuren: </strong><br>
+							Maandag – dinsdag – woensdag : 9u tot 20u<br>
+							Donderdag en vrijdag : 19u tot 21u
+						</p>
+						<p id="social-bottom">
+							<a class="socialico-facebook monochrome" href="https://www.facebook.com/Evissimo-1386818484874017/" title="Facebook"></a>
+						</p>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<section id="map" class="light_section"></section>
 
 		<section id="copyright" class="light_section">
 			<div class="container">
@@ -112,7 +154,7 @@
 
 			</div>
 		</section> 
- 
+
 		<div class="preloader">
 			<div class="preloaderimg"></div>
 		</div>
@@ -148,6 +190,57 @@
         <script src='twitter/jquery.tweet.min.js'></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+
+
+        <!-- Map Scripts -->
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript">
+            var lat;
+            var lng;
+            var map;
+
+            //type your address after "address="
+            jQuery.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=belgië, 2580 Putte, Schrieksesteenweg 9&sensor=false', function(data) {
+                lat = data.results[0].geometry.location.lat;
+                lng = data.results[0].geometry.location.lng;
+            }).complete(function(){
+                dxmapLoadMap();
+            });
+
+            function attachSecretMessage(marker, message)
+            {
+                var infowindow = new google.maps.InfoWindow(
+                    { content: message
+                    });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.open(map,marker);
+                });
+            }
+
+            window.dxmapLoadMap = function()
+            {
+                var center = new google.maps.LatLng(lat, lng);
+                var settings = {
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    zoom: 16,
+                    draggable: false,
+                    scrollwheel: false,
+                    center: center
+                };
+                map = new google.maps.Map(document.getElementById('map'), settings);
+
+                var marker = new google.maps.Marker({
+                    position: center,
+                    title: 'Evissimo',
+                    map: map
+                });
+                marker.setTitle('Map title'.toString());
+            //type your map title and description here
+            attachSecretMessage(marker, '<h3>Evissimo</h3>Schrieksesteenweg 9, 2580 Putte');
+            }
+        </script>
+
 
     </body>
 </html>
