@@ -49,12 +49,12 @@ jQuery(document).ready(function() {
         var $form = jQuery(this);
         var request = $form.serialize();
         jQuery($form).find('p.contact-form-respond').remove();
-        var ajax = jQuery.post( "https://evissimo.azurewebsites.net/contact", request )
+        var ajax = jQuery.post( "https://evissimo.azurewebsites.net/api/contact", request )
             .done(function( data ) {
                 jQuery($form).find('[type="submit"]').attr('disabled', false).parent().prepend('<p class="contact-form-respond highlight">'+data+'</p>');
         })
             .fail(function( data ) {
-                jQuery($form).find('[type="submit"]').attr('disabled', false).parent().prepend('<p>Er heeft zich een fout voorgedaan tijdens het versturen van uw gegevens.</p>');
+                jQuery($form).find('[type="submit"]').attr('disabled', false).parent().prepend('<p class="contact-form-respond">Versturen van uw aanvraag is niet gelukt, probeer opnieuw...</p>');
         })
     });
 
