@@ -912,7 +912,6 @@ z-index: 10000;
      }
 @media (max-width: 767px) {
 	#logo .navbar-brand {
-	max-width: 240px;
     display: inline-block;
 	}
 }
