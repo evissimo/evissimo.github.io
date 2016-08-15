@@ -133,24 +133,6 @@ jQuery(document).ready(function() {
 	    	autoPlay: 5000
 	    });
 	}
-    
-	//bx slider
-	if (jQuery().bxSlider) {
-		jQuery('.bxslider').bxSlider({
-			auto: true,
-			controls: false,
-			pager: false,
-		  	mode: 'fade'
-		});
-
-		jQuery('.vertical-slider').bxSlider({
-			mode: 'vertical',
-			//slideWidth: 300,
-			minSlides: 2,
-			slideMargin: 30,
-			pager: false
-		});
-	}
 
 	//single page localscroll and scrollspy
 	var navHeight = jQuery('#header').outerHeight(true) + 40;
