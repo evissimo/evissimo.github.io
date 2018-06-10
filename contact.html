@@ -94,7 +94,7 @@
 					<div class="block widget_text col-sm-6">
 						<h3>Contact gegevens</h3>
 						<p>
-							<i class="rt-icon-location highlight"></i> <strong>Adres:</strong> Schrieksesteenweg 9, 2580 Putte, België<br> 
+							<i class="rt-icon-location highlight"></i> <strong>Adres:</strong> Lierbaan 261 B, 2580 Putte, België<br> 
 							<i class="rt-icon-phone highlight"></i> <strong>Telefoon: </strong>+32 471 72 39 47<br>
 							<i class="rt-icon-mail2 highlight"></i> <strong>Email: </strong><a href="mailto:evy@evissimo.be">evy@evissimo.be</a><br> 
 							<i class="rt-icon-world highlight"></i> <strong>Website: </strong><a href="http://www.evissimo.be">www.evissimo.be</a><br>
@@ -196,7 +196,7 @@
             var map;
 
             //type your address after "address="
-            jQuery.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=belgië, 2580 Putte, Schrieksesteenweg 9&sensor=false', function(data) {
+            jQuery.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=belgië, 2580 Putte, Lierbaan 261 B&sensor=false', function(data) {
                 lat = data.results[0].geometry.location.lat;
                 lng = data.results[0].geometry.location.lng;
             }).complete(function(){
@@ -231,8 +231,8 @@
                     map: map
                 });
                 marker.setTitle('Evissimo'.toString());
-            //type your map title and description here
-            attachSecretMessage(marker, '<h3>Evissimo</h3>Schrieksesteenweg 9, 2580 Putte');
+				//type your map title and description here
+				attachSecretMessage(marker, '<h3>Evissimo</h3>Lierbaan 261 B, 2580 Putte');
             }
         </script>
 
