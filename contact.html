@@ -196,7 +196,7 @@
             var map;
 
             //type your address after "address="
-            jQuery.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=belgië, 2580 Putte, Lierbaan 261 B&sensor=false', function(data) {
+            jQuery.getJSON('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyA_g0NRdskw8WoV2FQxZLTJ3r1PaeTdYGE&address=belgië, 2580 Putte, Lierbaan 261 B&sensor=false', function(data) {
                 lat = data.results[0].geometry.location.lat;
                 lng = data.results[0].geometry.location.lng;
             }).complete(function(){
