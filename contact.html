@@ -186,23 +186,8 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
-
-        <!-- Map Scripts -->
-
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_g0NRdskw8WoV2FQxZLTJ3r1PaeTdYGE&"></script>
         <script type="text/javascript">
-            var lat;
-            var lng;
-            var map;
-
-            //type your address after "address="
-            jQuery.getJSON('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyA_g0NRdskw8WoV2FQxZLTJ3r1PaeTdYGE&address=belgië, 2580 Putte, Lierbaan 261 B&sensor=false', function(data) {
-                lat = data.results[0].geometry.location.lat;
-                lng = data.results[0].geometry.location.lng;
-            }).complete(function(){
-                dxmapLoadMap();
-            });
-
+            
             function attachSecretMessage(marker, message)
             {
                 var infowindow = new google.maps.InfoWindow(
@@ -213,9 +198,9 @@
                 });
             }
 
-            window.dxmapLoadMap = function()
+			function initMap()
             {
-                var center = new google.maps.LatLng(lat, lng);
+                var center = new google.maps.LatLng(51.0730741, 4.6219788);
                 var settings = {
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     zoom: 16,
@@ -231,11 +216,10 @@
                     map: map
                 });
                 marker.setTitle('Evissimo'.toString());
-				//type your map title and description here
+				
 				attachSecretMessage(marker, '<h3>Evissimo</h3>Lierbaan 261 B, 2580 Putte');
             }
         </script>
-
-
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_g0NRdskw8WoV2FQxZLTJ3r1PaeTdYGE&callback=initMap"></script>
     </body>
 </html>
