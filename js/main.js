@@ -249,38 +249,7 @@ jQuery(window).load(function(){
 		});
 	}
 
-	jQuery('body').delay(1000).scrollspy('refresh');
-
-
-	//preloader
-	jQuery(".preloaderimg").fadeOut();
-	jQuery(".preloader").delay(200).fadeOut("slow").delay(200, function(){
-		jQuery(this).remove();
-	});
-
-	//flickr
-	// use http://idgettr.com/ to find your ID
-	if (jQuery().jflickrfeed) {
-		jQuery("#flickr").jflickrfeed({
-			flickrbase: "http://api.flickr.com/services/feeds/",
-			limit: 6,
-			qstrings: {
-				id: "63512867@N07"
-			},
-			itemTemplate: '<a href="{{image_b}}" rel="prettyPhoto[pp_gal]"><li><img alt="{{title}}" src="{{image_s}}" /></li></a>'
-		}, function(data) {
-			jQuery("#flickr a").prettyPhoto({
-				theme: 'facebook'
-	   		});
-	   		jQuery("#flickr li").hover(function () {						 
-			   jQuery(this).find("img").stop().animate({ opacity: 0.5 }, 200);
-		    }, function() {
-			   jQuery(this).find("img").stop().animate({ opacity: 1.0 }, 400);
-		    });
-		});
-	}
-
-
+	jQuery('body').delay(1000).scrollspy('refresh');	
 });
 
 jQuery(window).resize(function(){
